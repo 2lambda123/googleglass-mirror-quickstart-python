@@ -13,6 +13,7 @@
 # limitations under the License.
 
 """Request Handler for /notify endpoint."""
+import secrets
 
 __author__ = 'alainv@google.com (Alain Vongsouvanh)'
 
@@ -21,8 +22,6 @@ import io
 import json
 import logging
 import webapp2
-
-from random import choice
 from apiclient.http import MediaIoBaseUpload
 from oauth2client.appengine import StorageByKeyName
 
@@ -92,7 +91,7 @@ class NotifyHandler(webapp2.RequestHandler):
         # Grab the spoken text from the timeline card and update the card with
         # an HTML response (deleting the text as well).
         note_text = item.get('text', '');
-        utterance = choice(CAT_UTTERANCES)
+        utterance = secrets.SystemRandom().choice(CAT_UTTERANCES)
 
         item['text'] = None
         item['html'] = ("<article class='auto-paginate'>" +
