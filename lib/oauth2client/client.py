@@ -490,7 +490,7 @@ class OAuth2Credentials(Credentials):
                                    redirections, connection_type)
 
       if resp.status in REFRESH_STATUS_CODES:
-        logger.info('Refreshing due to a %s' % str(resp.status))
+        logger.info('Refreshing due to a %s', str(resp.status))
         self._refresh(request_orig)
         self.apply(headers)
         return request_orig(uri, method, body, clean_headers(headers),
@@ -696,7 +696,7 @@ class OAuth2Credentials(Credentials):
     else:
       # An {'error':...} response body means the token is expired or revoked,
       # so we flag the credentials as such.
-      logger.info('Failed to retrieve access token: %s' % content)
+      logger.info('Failed to retrieve access token: %s', content)
       error_msg = 'Invalid response %s.' % resp['status']
       try:
         d = simplejson.loads(content)
@@ -1301,7 +1301,7 @@ class OAuth2WebServerFlow(Flow):
                                id_token=d.get('id_token', None),
                                token_response=d)
     else:
-      logger.info('Failed to retrieve access token: %s' % content)
+      logger.info('Failed to retrieve access token: %s', content)
       if 'error' in d:
         # you never know what those providers got to say
         error_msg = unicode(d['error'])
