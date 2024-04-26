@@ -102,8 +102,8 @@ class Headers(collections.defaultdict):
   """Headers for managing subscriptions."""
 
 
-  ALL_HEADERS = set([SUBSCRIBE, SUBSCRIPTION_ID, TOPIC_ID, TOPIC_URI,
-                     CLIENT_TOKEN, EVENT_TYPE, UNSUBSCRIBE])
+  ALL_HEADERS = {SUBSCRIBE, SUBSCRIPTION_ID, TOPIC_ID, TOPIC_URI,
+                     CLIENT_TOKEN, EVENT_TYPE, UNSUBSCRIBE}
 
   def __init__(self):
     """Create a new subscription configuration instance."""
