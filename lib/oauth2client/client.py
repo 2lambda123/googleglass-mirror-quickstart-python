@@ -1251,7 +1251,7 @@ class OAuth2WebServerFlow(Flow):
       refresh_token.
     """
 
-    if not (isinstance(code, str) or isinstance(code, unicode)):
+    if not isinstance(code, (str, unicode)):
       if 'code' not in code:
         if 'error' in code:
           error_msg = code['error']
